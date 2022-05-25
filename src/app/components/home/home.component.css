@@ -1,0 +1,33 @@
+body{
+    color: darkred;
+    font-family: 'Handlee', cursive;
+    background-image: url('../../../assets/images/Background.jpg');
+}
+.MainImg{
+    background-color: rgba(0, 0, 0, 0.493);
+}
+.MottoContainer{
+    top: 15%;
+    left: 5%;
+}
+.MottoText{
+    font-size: 3vw;
+    font-family: 'Rubik Microbe', cursive;
+}
+.SidePanel{
+    background-color: rgba(0, 0, 0, 0.493);
+}
+.AboutUs{
+    background-color: rgba(145, 0, 0, 0.83);
+    color: aliceblue;
+}
+@media (max-width: 768px) {
+    
+    .MottoContainer{
+        top: 40%;
+        left: 10%;
+    }
+    .MottoText{
+        font-size: 6vw;
+    }
+}

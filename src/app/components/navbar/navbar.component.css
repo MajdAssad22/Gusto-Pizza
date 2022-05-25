@@ -1,0 +1,12 @@
+header {  
+    background-color: darkred;
+    font-size: 1.1rem;
+    box-shadow: 0 0 25px 0 black;
+}
+.Logo{
+    width: 100px;
+}
+.CustomerInfo{
+    color: whitesmoke;
+    margin: 0px 10px 0px 0px;
+}
