@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { NewOrderComponent } from './components/new-order/new-order.component';
-import { OrdersComponent } from './components/orders/orders.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NewOrderComponent } from './pages/new-order/new-order.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: "Login", component: LoginComponent},
   { path: "NewOrder",  component: NewOrderComponent},
   { path: "Orders",  component: OrdersComponent},
+  { path: "AboutUs",  component: AboutUsComponent},
+  { path: "ContactUs",  component: ContactUsComponent},
 ];
 
 @NgModule({

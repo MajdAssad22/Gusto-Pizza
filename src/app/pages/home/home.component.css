@@ -17,10 +17,6 @@ body{
 .SidePanel{
     background-color: rgba(0, 0, 0, 0.493);
 }
-.AboutUs{
-    background-color: rgba(145, 0, 0, 0.83);
-    color: aliceblue;
-}
 @media (max-width: 768px) {
     
     .MottoContainer{
