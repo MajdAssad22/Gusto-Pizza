@@ -6,9 +6,7 @@ export class Order {
     IsDone: boolean;
     DateOfOrder: Date;
     Pizzas: Array<Pizza> = new Array<Pizza>();
-    // Drinks: Array<Drink> = new Array<Drink>();
     Drinks: Map<Drink, number> = new Map<Drink, number>();
-    // CustomerId: number;
 
     constructor(orderId: number, state: boolean, dateOfOrder: Date, pizzas?: Array<Pizza>, drinks?: Map<Drink, number>){
         this.OrderId = orderId;

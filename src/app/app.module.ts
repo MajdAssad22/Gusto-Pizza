@@ -38,6 +38,7 @@ import { DrinkCardComponent } from './components/drink-card/drink-card.component
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    FormsModule,
     PopoverModule.forRoot(),
     ModalModule.forRoot()
   ],
