@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Customer } from 'src/models/customer';
 import { CustomerService } from './customer.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,25 @@ export class LoginService {
   private isLoggedInSource = new BehaviorSubject<boolean>(false);
   isLoggedIn = this.isLoggedInSource.asObservable();
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private http: HttpClient) { }
 
-  verifyCustomer(email: string, password: string): boolean{
-    //TODO: Add the verfication of the customer.
-    if(email != "" && password != ""){
-      this.customerService.currentCustomer = new Customer(1,"Majd","Assad",undefined,undefined,email,undefined);
-      this.isLoggedInSource.next(true);
-      return true;
-    }
-    return false;
+  public login(email: string, password: string): Promise<any> {
+    let loginInfo: any = {
+      email: email,
+      password: password
+    };
+    let promise = new Promise((resolve, reject) =>{
+      this.http.post<Customer>(`http://localhost:3000/customers/login`, loginInfo).subscribe(customer => {
+        if(customer){
+          // Correct Information
+          this.isLoggedInSource.next(true);
+          this.customerService.currentCustomer = customer;
+          this.customerService.getOrders();
+          resolve(customer);
+        }
+        reject();
+      });
+    });
+    return promise;
   }
 }
