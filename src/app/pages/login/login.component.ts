@@ -18,12 +18,10 @@ export class LoginComponent implements OnInit {
   }
 
   tryLoginIn(){
-    let isCustomerVerified = this.loginService.verifyCustomer(this.email, this.password);
-    if(isCustomerVerified){
-      this.router.navigate(['/Home']);
-    }else{
-      this.invalidData = true;
-    }
+    this.loginService.login(this.email,this.password)
+      .then(
+        () => this.router.navigate(['/Home']),
+        () => this.invalidData = true);
   }
 
   resetData(){

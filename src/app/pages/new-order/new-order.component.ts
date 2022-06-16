@@ -36,12 +36,12 @@ export class NewOrderComponent {
     this.availableSizes.push(new PizzaSize(4,"X-Large",55));
 
     // Demo Data
-    this.currentOrder.Pizzas.push(new Pizza(1,this.availableSizes[0],5,[this.availableToppings[1],this.availableToppings[2]]));
-    this.currentOrder.Pizzas.push(new Pizza(2,this.availableSizes[1],2,[this.availableToppings[0],this.availableToppings[1]]));
-    this.currentOrder.Pizzas.push(new Pizza(3,this.availableSizes[3],1,[this.availableToppings[1],this.availableToppings[2]]));
-    this.currentOrder.Drinks.set(this.availableDrinks[0],1);
-    this.currentOrder.Drinks.set(this.availableDrinks[1],2);
-    this.currentOrder.Drinks.set(this.availableDrinks[2],3);
+    // this.currentOrder.Pizzas.push(new Pizza(1,this.availableSizes[0],5,[this.availableToppings[1],this.availableToppings[2]]));
+    // this.currentOrder.Pizzas.push(new Pizza(2,this.availableSizes[1],2,[this.availableToppings[0],this.availableToppings[1]]));
+    // this.currentOrder.Pizzas.push(new Pizza(3,this.availableSizes[3],1,[this.availableToppings[1],this.availableToppings[2]]));
+    // this.currentOrder.Drinks.set(this.availableDrinks[0],1);
+    // this.currentOrder.Drinks.set(this.availableDrinks[1],2);
+    // this.currentOrder.Drinks.set(this.availableDrinks[2],3);
   }
 
   showModal(template: TemplateRef<any>){

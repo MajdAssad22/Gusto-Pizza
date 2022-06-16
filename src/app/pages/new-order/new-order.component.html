@@ -1,7 +1,7 @@
 <!-- Order Info -->
 <div class="m-5 d-flex flex-wrap">
     <app-pizza-card *ngFor="let pizza of currentOrder.Pizzas" [pizza]="pizza"></app-pizza-card>
-    <app-drink-card *ngFor="let drink of currentOrder.Drinks | keyvalue" [drink]="drink.key" [quantity]="drink.value"></app-drink-card>
+    <app-drink-card *ngFor="let drink of currentOrder.Drinks" [drink]="drink"></app-drink-card>
     
     <div class="align-self-center">
         <div class="d-flex align-items-center justify-content-center m-2" style="width: 18rem;">
@@ -44,7 +44,7 @@
           <label class="input-group-text" for="SizeGroup">Size</label>
           <select id="SizeGroup" class="form-select" required>
             <option selected disabled value="">Choose...</option>
-            <option *ngFor="let size of availableSizes" [value]=size.SizeId>{{size.Name}} - $ {{size.Price}}</option>
+            <option *ngFor="let size of availableSizes" [value]=size.SizeId>{{size.SizeName}} - $ {{size.SizePrice}}</option>
           </select>
         </div>
         <!-- Quantity input -->
@@ -56,13 +56,13 @@
         <div class="card p-0">
           <label class="input-group-text mb-2">Toppings</label>
           <div class="form-check m-2" *ngFor="let topping of availableToppings">
-            <input class="form-check-input" type="checkbox" id="{{topping.Name}}CheckBox">
+            <input class="form-check-input" type="checkbox" id="{{topping.ToppingName}}CheckBox">
             <div class="form-check-label container">
-              <label class="col-6" for="{{topping.Name}}CheckBox">
-                {{topping.Name}}
+              <label class="col-6" for="{{topping.ToppingName}}CheckBox">
+                {{topping.ToppingName}}
               </label>
-              <label class="col-6" for="{{topping.Name}}CheckBox">
-                $ {{topping.Price}}
+              <label class="col-6" for="{{topping.ToppingName}}CheckBox">
+                $ {{topping.ToppingPrice}}
               </label>
             </div>
           </div>
@@ -126,18 +126,18 @@
               Pizza
             </th>
             <td>{{pizza.Quantity}}</td>
-            <td>{{pizza.Size.Name}}</td>
+            <td>{{pizza.Size.SizeName}}</td>
             <td>$ {{pizza.pizzaPrice()}}</td>
           </tr>
           <!-- Drinks -->
-          <tr *ngFor="let drink of currentOrder.Drinks | keyvalue">
+          <tr *ngFor="let drink of currentOrder.Drinks">
             <th scope="row">
               <mat-icon class="bi-trash2-fill"></mat-icon>
               Drink
             </th>
-            <td>{{drink.value}}</td>
-            <td>{{drink.key.Name}}</td>
-            <td>$ {{drink.key.Price * drink.value}}</td>
+            <td>{{drink.Quantity}}</td>
+            <td>{{drink.Name}}</td>
+            <td>$ {{drink.Price * drink.Quantity}}</td>
           </tr>
           <tr>
             <th class="text-success" colspan="2">

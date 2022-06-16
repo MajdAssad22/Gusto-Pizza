@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#OrderID</th>
+        <th scope="col">Is Done</th>
+        <th scope="col">Date Of Order</th>
+        <th scope="col">Number Of Pizzas</th>
+        <th scope="col">Number Of Drinks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <th scope="row">{{order.OrderId}}</th>
+        <td>{{order.IsDone}}</td>
+        <td>{{order.DateOfOrder}}</td>
+        <td>{{order.Pizzas.length}}</td>
+        <td>{{order.Drinks.length}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="test()">TEST</button>

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Drink } from 'src/models/drink';
+import { DrinkOrder } from 'src/models/drink-order';
 
 @Component({
   selector: 'app-drink-card',
@@ -7,7 +8,7 @@ import { Drink } from 'src/models/drink';
   styleUrls: ['./drink-card.component.css']
 })
 export class DrinkCardComponent{
-  @Input() drink: Drink = new Drink(0,"",0);
-  @Input() quantity: number = 1;
+  @Input() drink: DrinkOrder = new DrinkOrder(0,"",0,0);
+  quantity: number = this.drink.Quantity;
   constructor() { }
 }

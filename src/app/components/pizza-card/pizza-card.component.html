@@ -1,7 +1,7 @@
 <div class="card m-2 ToppingView" style="width: 18rem;">
     <img src="https://myitalianlink.com/wordpress/wp-content/uploads/2018/05/authentic-pizza-in-Italy.jpeg" class="card-img-top" alt="...">
     <div class="card-body">
-        <h3 class="bi bi-rulers"> Size: {{pizza.Size.Name}}</h3>
+        <h3 class="bi bi-rulers"> Size: {{pizza.Size.SizeName}}</h3>
         <h3 class="bi bi-grid"> Quantity: {{pizza.Quantity}}</h3>        
         <!-- <h3 class="bi bi-card-list" [popover]="toppingsTemplate" popoverTitle="Toppings:"> Toppings: {{pizza.Toppings.length}}</h3> -->
         <button type="button" class="btn btn-default btn-secondary" [popover]="toppingsTemplate">
@@ -9,7 +9,7 @@
             View Toppings x {{pizza.Toppings.length}}
         </button>
         <ng-template #toppingsTemplate>
-            <p *ngFor="let topping of pizza.Toppings" class="fw-bold m-0">{{topping.Name}}</p>
+            <p *ngFor="let topping of pizza.Toppings" class="fw-bold m-0">{{topping.ToppingName}}</p>
         </ng-template>
     </div>
     <div class="d-flex justify-content-end m-2">

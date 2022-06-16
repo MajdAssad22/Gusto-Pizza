@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/models/order';
+import { CustomerService } from 'src/services/customer.service';
 
 @Component({
   selector: 'app-orders',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-
-  constructor() { }
+  orders: Array<Order> = new Array();
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
+    this.customerService.getOrders()
+      .then(
+        (result) => this.orders = result,
+        () => console.log("ERROR!"));
   }
-
+  test(){
+    this.customerService.getOrders()
+      .then(
+        (result) => console.log(result),
+        () => console.log("ERROR!"));
+  }
 }
