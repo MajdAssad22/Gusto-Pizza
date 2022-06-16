@@ -1,4 +1,5 @@
 import { Drink } from "./drink";
+import { DrinkOrder } from "./drink-order";
 import { Pizza } from "./pizza";
 
 export class Order {
@@ -6,9 +7,9 @@ export class Order {
     IsDone: boolean;
     DateOfOrder: Date;
     Pizzas: Array<Pizza> = new Array<Pizza>();
-    Drinks: Map<Drink, number> = new Map<Drink, number>();
+    Drinks: Array<DrinkOrder> = new Array<DrinkOrder>();
 
-    constructor(orderId: number, state: boolean, dateOfOrder: Date, pizzas?: Array<Pizza>, drinks?: Map<Drink, number>){
+    constructor(orderId: number, state: boolean, dateOfOrder: Date, pizzas?: Array<Pizza>, drinks?: Array<DrinkOrder>){
         this.OrderId = orderId;
         this.IsDone = state;
         this.DateOfOrder = dateOfOrder;
@@ -26,7 +27,7 @@ export class Order {
             total += pizza.pizzaPrice();
         }
         for(let drink of this.Drinks){
-            total += drink[0].Price * drink[1];
+            total += drink.Price * drink.Quantity;
         }
         return total;
     }

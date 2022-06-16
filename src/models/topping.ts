@@ -1,11 +1,11 @@
 export class Topping {
     ToppingId: number;
-    Name: string;
-    Price: number;
+    ToppingName: string;
+    ToppingPrice: number;
 
     constructor(toppingId: number, toppingName: string, toppingPrice: number){
         this.ToppingId = toppingId;
-        this.Name = toppingName;
-        this.Price = toppingPrice;
+        this.ToppingName = toppingName;
+        this.ToppingPrice = toppingPrice;
     }
 }

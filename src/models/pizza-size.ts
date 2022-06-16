@@ -1,11 +1,11 @@
 export class PizzaSize {
     SizeId: number;
-    Name: string;
-    Price: number;
+    SizeName: string;
+    SizePrice: number;
 
     constructor(sizeId: number, sizeName: string, sizePrice: number){
         this.SizeId = sizeId;
-        this.Name = sizeName;
-        this.Price = sizePrice;
+        this.SizeName = sizeName;
+        this.SizePrice = sizePrice;
     }
 }

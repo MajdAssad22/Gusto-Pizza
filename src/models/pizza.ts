@@ -17,9 +17,9 @@ export class Pizza {
     pizzaPrice(){
         let totalprice: number = 0;
         for(let topping of this.Toppings){
-            totalprice += topping.Price;
+            totalprice += topping.ToppingPrice;
         }
-        totalprice += this.Size.Price;
+        totalprice += this.Size.SizePrice;
         return totalprice * this.Quantity;
     }
 }

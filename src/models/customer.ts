@@ -8,22 +8,21 @@ export class Customer {
     Address: string = "";
     Email: string = "";
     Orders: Array<Order> = new Array<Order>();
+    Password: string = "";
 
-    constructor(customerId: number, firstName: string, lastName: string, phone?: string, address?: string, email?: string, orders?: Array<Order>) {
-        this.CustomerId = customerId;
-        this.FirstName = firstName;
-        this.LastName = lastName;
-        if (phone) {
-            this.Phone = phone;
+    constructor(CustomerId: number, FirstName: string, LastName: string, Password: string, Phone?: string, Address?: string, Email?: string) {
+        this.CustomerId = CustomerId;
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.Password = Password;
+        if (Phone) {
+            this.Phone = Phone;
         }
-        if (address) {
-            this.Address = address;
+        if (Address) {
+            this.Address = Address;
         }
-        if (email) {
-            this.Email = email;
-        }
-        if (orders) {
-            this.Orders = orders;
+        if (Email) {
+            this.Email = Email;
         }
     }
 }
