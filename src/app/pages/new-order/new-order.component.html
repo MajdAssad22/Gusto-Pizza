@@ -1,7 +1,7 @@
 <!-- Order Info -->
 <div class="m-5 d-flex flex-wrap">
-    <app-pizza-card *ngFor="let pizza of currentOrder.Pizzas" [pizza]="pizza"></app-pizza-card>
-    <app-drink-card *ngFor="let drink of currentOrder.Drinks" [drink]="drink"></app-drink-card>
+    <app-pizza-card *ngFor="let pizza of currentOrder.Pizzas; let i = index" [pizza]="pizza" (removePizza)="removePizza(i)"></app-pizza-card>
+    <app-drink-card *ngFor="let drink of currentOrder.Drinks; let i = index" [drink]="drink" (removeDrink)="removeDrink(i)"></app-drink-card>
     
     <div class="align-self-center">
         <div class="d-flex align-items-center justify-content-center m-2" style="width: 18rem;">
@@ -38,36 +38,46 @@
       </button>
     </div>
     <div class="modal-body">
-      <form class="row g-3">
+      <form #addPizzaFrom="ngForm" (ngSubmit)="addPizza(addPizzaFrom)" class="row g-3">
         <!-- Size input -->
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="SizeGroup">Size</label>
-          <select id="SizeGroup" class="form-select" required>
-            <option selected disabled value="">Choose...</option>
-            <option *ngFor="let size of availableSizes" [value]=size.SizeId>{{size.SizeName}} - $ {{size.SizePrice}}</option>
-          </select>
+        <div class="mb-2">
+          <div class="input-group">
+            <label class="input-group-text">Size</label>
+            <select name="PizzaSize" #PizzaSize="ngModel" ngModel class="form-select" required>
+              <option selected disabled value="">Choose...</option>
+              <option *ngFor="let size of availableSizes" [ngValue]="size">{{size.SizeName}} - $ {{size.SizePrice}}</option>
+            </select>
+          </div>
+          <div class="alert alert-danger mt-2 mb-0" role="alert" *ngIf="PizzaSize.touched && PizzaSize.invalid">
+            This field is required
+          </div>
         </div>
         <!-- Quantity input -->
-        <div class="input-group">
-          <label class="input-group-text" for="QuantityGroup">Quantity</label>
-          <input id="QuantityGroup" class="form-control" type="number" min="1" max="50" value="1" required>
+        <div class="mb-2">
+          <div class="input-group">
+            <label class="input-group-text">Quantity</label>
+            <input name="Quantity" #Quantity="ngModel" ngModel class="form-control" type="number" min="1" [max]="maxNumberOfPizzas" required>
+          </div>
+          <div class="alert alert-danger mt-2 mb-0" role="alert" *ngIf="(Quantity.touched || Quantity.dirty) && Quantity.invalid">
+            This field is required and must be a number between 1 and {{maxNumberOfPizzas}}
+          </div>
         </div>
         <!-- Toppings input -->
         <div class="card p-0">
           <label class="input-group-text mb-2">Toppings</label>
-          <div class="form-check m-2" *ngFor="let topping of availableToppings">
-            <input class="form-check-input" type="checkbox" id="{{topping.ToppingName}}CheckBox">
+          <div class="form-check m-2" *ngFor="let toppingCheckbox of availableToppings">
+            <input id="{{toppingCheckbox.Topping.ToppingName}}CheckBox" [ngModelOptions]="{standalone: true}" [(ngModel)]="toppingCheckbox.IsSelected" class="form-check-input" type="checkbox">
             <div class="form-check-label container">
-              <label class="col-6" for="{{topping.ToppingName}}CheckBox">
-                {{topping.ToppingName}}
+              <label class="col-6" for="{{toppingCheckbox.Topping.ToppingName}}CheckBox">
+                {{toppingCheckbox.Topping.ToppingName}}
               </label>
-              <label class="col-6" for="{{topping.ToppingName}}CheckBox">
-                $ {{topping.ToppingPrice}}
+              <label class="col-6" for="{{toppingCheckbox.Topping.ToppingName}}CheckBox">
+                $ {{toppingCheckbox.Topping.ToppingPrice}}
               </label>
             </div>
           </div>
         </div>
-        <button class="btn btn-success" type="submit">Add Pizza</button>
+        <button class="btn btn-success" type="submit" [disabled]="!addPizzaFrom.valid">Add Pizza</button>
       </form>
     </div>
 </ng-template>
@@ -81,21 +91,31 @@
       </button>
     </div>
     <div class="modal-body">
-      <form class="row g-3">
+      <form #addDrinkFrom="ngForm" (ngSubmit)="addDrink(addDrinkFrom)" class="row g-3">
         <!-- Drink Type Input -->
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="DrinkTypeGroup">Drink Type</label>
-          <select id="DrinkTypeGroup" class="form-select" required>
-            <option selected disabled value="">Choose...</option>
-            <option *ngFor="let drink of availableDrinks">{{drink.Name}} - $ {{drink.Price}}</option>
-          </select>
+        <div class="mb-2">
+          <div class="input-group">
+            <label class="input-group-text">Drink Type</label>
+            <select name="Drink" #Drink="ngModel" ngModel class="form-select" required>
+              <option selected disabled value="">Choose...</option>
+              <option *ngFor="let drink of availableDrinks" [ngValue]="drink">{{drink.DrinkName}} - $ {{drink.DrinkPrice}}</option>
+            </select>
+          </div>
+          <div class="alert alert-danger mt-2 mb-0" role="alert" *ngIf="Drink.touched && Drink.invalid">
+            This field is required
+          </div>
         </div>
         <!-- Quantity Input -->
-        <div class="input-group">
-          <label class="input-group-text" for="QuantityGroup">Quantity</label>
-          <input id="QuantityGroup" class="form-control" type="number" min="1" max="100" value="1" required>
+        <div class="mb-2">
+          <div class="input-group">
+            <label class="input-group-text">Quantity</label>
+            <input name="Quantity" #Quantity="ngModel" ngModel class="form-control" type="number" min="1" [max]="maxNumberOfDrinks" required>
+          </div>
+          <div class="alert alert-danger mt-2 mb-0" role="alert" *ngIf="(Quantity.touched || Quantity.dirty) && Quantity.invalid">
+            This field is required and must be a number between 1 and {{maxNumberOfDrinks}}
+          </div>
         </div>
-        <button class="btn btn-success" type="submit">Add Drink</button>
+        <button class="btn btn-success" type="submit" [disabled]="!addDrinkFrom.valid">Add Drink</button>
       </form>
     </div>
 </ng-template>
@@ -136,8 +156,8 @@
               Drink
             </th>
             <td>{{drink.Quantity}}</td>
-            <td>{{drink.Name}}</td>
-            <td>$ {{drink.Price * drink.Quantity}}</td>
+            <td>{{drink.DrinkName}}</td>
+            <td>$ {{drink.DrinkPrice * drink.Quantity}}</td>
           </tr>
           <tr>
             <th class="text-success" colspan="2">
@@ -147,7 +167,7 @@
               </label>
             </th>
             <th colspan="2">
-              <button class="btn btn-success" type="button">Checkout</button>
+              <button class="btn btn-success" type="button" (click)="checkout()" [disabled]="isLoading || (currentOrder.Pizzas.length == 0 && this.currentOrder.Drinks.length == 0)">Checkout</button>
             </th>
           </tr>
         </tbody>
