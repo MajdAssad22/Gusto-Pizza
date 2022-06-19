@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Pizza } from 'src/models/pizza';
-import { PizzaSize } from 'src/models/pizza-size';
 
 @Component({
   selector: 'app-pizza-card',
@@ -8,7 +7,11 @@ import { PizzaSize } from 'src/models/pizza-size';
   styleUrls: ['./pizza-card.component.css']
 })
 export class PizzaCardComponent {
-  @Input() pizza: Pizza = new Pizza(0,new PizzaSize(0,"",0) ,0, new Array());
-  
+  @Input() pizza: Pizza = new Pizza();
+  @Output("removePizza") removePizza: EventEmitter<any> = new EventEmitter();
   constructor() { }
+
+  deletePizza(){
+    this.removePizza.emit();
+  }
 }

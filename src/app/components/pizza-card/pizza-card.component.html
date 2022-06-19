@@ -1,18 +1,25 @@
-<div class="card m-2 ToppingView" style="width: 18rem;">
+<div class="card m-2 pizza-card">
     <img src="https://myitalianlink.com/wordpress/wp-content/uploads/2018/05/authentic-pizza-in-Italy.jpeg" class="card-img-top" alt="...">
     <div class="card-body">
         <h3 class="bi bi-rulers"> Size: {{pizza.Size.SizeName}}</h3>
         <h3 class="bi bi-grid"> Quantity: {{pizza.Quantity}}</h3>        
         <!-- <h3 class="bi bi-card-list" [popover]="toppingsTemplate" popoverTitle="Toppings:"> Toppings: {{pizza.Toppings.length}}</h3> -->
-        <button type="button" class="btn btn-default btn-secondary" [popover]="toppingsTemplate">
-            <mat-icon class="bi bi-card-list me-2"></mat-icon>
-            View Toppings x {{pizza.Toppings.length}}
-        </button>
+        <div class="d-flex justify-content-between align-items-end">
+            <button type="button" class="btn btn-default btn-secondary" [popover]="toppingsTemplate">
+                <mat-icon class="bi bi-card-list me-2"></mat-icon>
+                View Toppings x {{pizza.Toppings.length}}
+            </button>
+            <div>
+                <mat-icon class="icon-color">local_pizza</mat-icon>
+            </div>
+        </div>
         <ng-template #toppingsTemplate>
             <p *ngFor="let topping of pizza.Toppings" class="fw-bold m-0">{{topping.ToppingName}}</p>
         </ng-template>
     </div>
-    <div class="d-flex justify-content-end m-2">
-        <mat-icon class="text-danger">local_pizza</mat-icon>
-    </div>
+    <button class="d-flex justify-content-center btn btn-delete rounded-0 m-0 p-0" (click)="deletePizza()">
+        <div class="m-1">
+            <mat-icon class="bi bi-trash3-fill text-light"></mat-icon>
+        </div>
+    </button>
 </div>

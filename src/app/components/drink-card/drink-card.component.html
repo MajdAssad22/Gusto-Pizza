@@ -1,10 +1,15 @@
-<div class="card m-2" style="width: 18rem;">
-    <img src="https://blog.ciachef.edu/wp-content/uploads/2016/12/Cranberry-Smash-2.jpg" class="card-img-top" alt="...">
+<div class="card m-2 drink-card">
+    <img src="https://blog.ciachef.edu/wp-content/uploads/2016/12/Cranberry-Smash-2.jpg" class="card-img-top" alt="Drink Picture">
     <div class="card-body">
-        <h3 class="bi bi-grid-1x2"> Type: {{drink.Name}}</h3>
-        <h3 class="bi bi-grid"> Quantity: {{quantity}}</h3>
+        <h3 class="bi bi-grid-1x2"> Type: {{drink.DrinkName}}</h3>
+        <h3 class="bi bi-grid"> Quantity: {{drink.Quantity}}</h3>
+        <div class="d-flex justify-content-end m-2">
+            <mat-icon class="icon-color bi bi-trash2-fill"></mat-icon>
+        </div>
     </div>
-    <div class="d-flex justify-content-end m-2">
-        <mat-icon class="text-danger bi bi-trash2-fill"></mat-icon>
-    </div>
+    <button class="d-flex justify-content-center btn btn-delete rounded-0 m-0 p-0" (click)="deleteDrink()">
+        <div class="m-1">
+            <mat-icon class="bi bi-trash3-fill text-white"></mat-icon>
+        </div>
+    </button>
 </div>

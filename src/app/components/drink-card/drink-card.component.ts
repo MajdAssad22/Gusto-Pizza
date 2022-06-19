@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Drink } from 'src/models/drink';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DrinkOrder } from 'src/models/drink-order';
 
 @Component({
@@ -9,6 +8,10 @@ import { DrinkOrder } from 'src/models/drink-order';
 })
 export class DrinkCardComponent{
   @Input() drink: DrinkOrder = new DrinkOrder(0,"",0,0);
-  quantity: number = this.drink.Quantity;
+  @Output("removeDrink") removeDrink: EventEmitter<any> = new EventEmitter();
   constructor() { }
+
+  deleteDrink(){
+    this.removeDrink.emit();
+  }
 }

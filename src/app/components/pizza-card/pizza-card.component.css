@@ -1,0 +1,13 @@
+.pizza-card{
+    width: 18rem;
+    height: 25rem;
+}
+.icon-color{
+    color: rgb(195, 0, 0);
+}
+.btn-delete{
+    background-color: rgb(195, 0, 0);
+}
+.btn-delete:hover{
+    background-color: rgb(172, 0, 0);
+}
