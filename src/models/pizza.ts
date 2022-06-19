@@ -7,11 +7,11 @@ export class Pizza {
     Quantity: number;
     Toppings: Array<Topping>;
     
-    constructor(pizzaId: number, size: PizzaSize, quantity: number, toppings: Array<Topping>){
-        this.PizzaId = pizzaId;
-        this.Size = size;
-        this.Quantity = quantity;
-        this.Toppings = toppings;
+    constructor(pizzaId? : number, size? : PizzaSize, quantity? : number, toppings? : Array<Topping>){
+        this.PizzaId = pizzaId ?? 0;
+        this.Size = size ?? new PizzaSize();
+        this.Quantity = quantity ?? 0;
+        this.Toppings = toppings ?? new Array<Topping>();
     }
 
     pizzaPrice(){

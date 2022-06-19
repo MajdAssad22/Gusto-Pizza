@@ -1,11 +1,11 @@
 export class Drink {
     DrinkId: number;
-    Name: string;
-    Price: number;
+    DrinkName: string;
+    DrinkPrice: number;
 
     constructor(sizeId: number, drinkName: string, drinkPrice: number){
         this.DrinkId = sizeId;
-        this.Name = drinkName;
-        this.Price = drinkPrice;
+        this.DrinkName = drinkName;
+        this.DrinkPrice = drinkPrice;
     }
 }

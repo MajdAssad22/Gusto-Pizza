@@ -3,9 +3,9 @@ export class PizzaSize {
     SizeName: string;
     SizePrice: number;
 
-    constructor(sizeId: number, sizeName: string, sizePrice: number){
-        this.SizeId = sizeId;
-        this.SizeName = sizeName;
-        this.SizePrice = sizePrice;
+    constructor(SizeId?: number, SizeName?: string, SizePrice?: number){
+        this.SizeId = SizeId ?? 0;
+        this.SizeName = SizeName ?? "";
+        this.SizePrice = SizePrice ?? 0;
     }
 }
