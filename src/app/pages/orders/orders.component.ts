@@ -12,15 +12,13 @@ export class OrdersComponent implements OnInit {
   constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
-    this.customerService.getOrders()
-      .then(
-        (result) => this.orders = result,
-        () => console.log("ERROR!"));
-  }
-  test(){
-    this.customerService.getOrders()
-      .then(
-        (result) => console.log(result),
-        () => console.log("ERROR!"));
+    this.orders = this.customerService.orders;
+    // this.customerService.getOrders()
+    //   .then(
+    //     (result) => {
+    //       console.log(result);
+    //       this.orders = result;
+    //     },
+    //     () => console.log("ERROR!"));
   }
 }

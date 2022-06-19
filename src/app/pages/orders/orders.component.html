@@ -6,6 +6,7 @@
         <th scope="col">Date Of Order</th>
         <th scope="col">Number Of Pizzas</th>
         <th scope="col">Number Of Drinks</th>
+        <th scope="col">Price</th>
       </tr>
     </thead>
     <tbody>
@@ -15,8 +16,7 @@
         <td>{{order.DateOfOrder}}</td>
         <td>{{order.Pizzas.length}}</td>
         <td>{{order.Drinks.length}}</td>
+        <td>{{order.totalOrderPrice()}}</td>
       </tr>
     </tbody>
   </table>
-
-  <button (click)="test()">TEST</button>
