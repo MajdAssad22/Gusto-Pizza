@@ -2,7 +2,6 @@
     <thead>
       <tr>
         <th scope="col">#OrderID</th>
-        <th scope="col">Is Done</th>
         <th scope="col">Date Of Order</th>
         <th scope="col">Number Of Pizzas</th>
         <th scope="col">Number Of Drinks</th>
@@ -12,11 +11,10 @@
     <tbody>
       <tr *ngFor="let order of orders">
         <th scope="row">{{order.OrderId}}</th>
-        <td>{{order.IsDone}}</td>
         <td>{{order.DateOfOrder}}</td>
         <td>{{order.Pizzas.length}}</td>
         <td>{{order.Drinks.length}}</td>
-        <td>{{order.totalOrderPrice()}}</td>
+        <td>$ {{order.totalOrderPrice()}}</td>
       </tr>
     </tbody>
   </table>

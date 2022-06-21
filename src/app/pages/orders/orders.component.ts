@@ -13,12 +13,5 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.orders = this.customerService.orders;
-    // this.customerService.getOrders()
-    //   .then(
-    //     (result) => {
-    //       console.log(result);
-    //       this.orders = result;
-    //     },
-    //     () => console.log("ERROR!"));
   }
 }
