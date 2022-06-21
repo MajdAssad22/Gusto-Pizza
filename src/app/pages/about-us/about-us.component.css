@@ -8,3 +8,13 @@
     background-color: rgba(145, 0, 0, 0.83);
     color: aliceblue;
 }
+.AboutUsText{
+    width: 65%;
+}
+
+@media (max-width: 768px) {
+    
+    .AboutUsText{
+        width: 100%;
+    }
+}
