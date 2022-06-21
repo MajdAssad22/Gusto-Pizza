@@ -159,29 +159,20 @@
             <td>{{drink.DrinkName}}</td>
             <td>$ {{drink.DrinkPrice * drink.Quantity}}</td>
           </tr>
-          <tr>
-            <th class="text-success" colspan="2">
-              <mat-icon class="bi bi-coin"></mat-icon>
-              <label class="m-2 text-uppercase">
-                Total: $ {{currentOrder.totalOrderPrice()}}
-              </label>
-            </th>
-            <th colspan="2">
-              <button class="btn btn-success" type="button" (click)="checkout()" [disabled]="isLoading || (currentOrder.Pizzas.length == 0 && this.currentOrder.Drinks.length == 0)">Checkout</button>
-            </th>
-          </tr>
         </tbody>
       </table>
-
-      <!-- <div *ngFor="let pizza of currentPizzas">
-        <mat-icon>local_pizza</mat-icon>
-        <div>
-          {{pizza.Size.Name}} * {{pizza.Quantity}}
-          <div *ngFor="let topping of pizza.Toppings">
-            {{topping.Name}} = {{topping.Price}}
-          </div>
+      <!-- Checkout Button And Total Price -->
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-success" type="button" (click)="checkout()" [disabled]="isLoading || (currentOrder.Pizzas.length == 0 && this.currentOrder.Drinks.length == 0)">Checkout</button>
+        <div class="d-flex align-items-center text-success me-3">
+          <i class="bi bi-coin fs-4"></i>
+          <label class="m-2 fs-6 text-uppercase ">
+            Total:
+          </label>
+          <label class="fs-6 text-uppercase fw-bold">
+            $ {{currentOrder.totalOrderPrice()}}
+          </label>
         </div>
-        <div>= {{pizza.totalPrice()}}</div>
-      </div> -->
+      </div>
     </div>
 </ng-template>
