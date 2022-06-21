@@ -1,69 +1,77 @@
-<style>
-    @media screen and (max-width: 700px) {
-    .row .rightshit{
-        content: url("/Regiester/gif03.gif");
-        width:100%;
-        /* height: 300px; */
-
-    }
-}
-</style>
-<body>
-    <div class="container">
-
-        <div class="row">
-            <!-- <img class=" green col-lg-4 col-md-3 col-sm-1 col-xs-1 moh mt-4 d-flex justify-content-center " src="/Regiester/vegan-pizza-elysian-delights_small.jpg"  alt=""> -->
-
-            <!--Left Side-->
-            <div class="col-lg-4 col-md-3 col-sm-1 col-xs-1 moh mt-4 d-flex justify-content-center "></div>
-
-            <!--Center-->
-            <div class="h-25 col-lg-4 col-md-6 col-sm-10 col-xs-10 mt-4 d-flex justify-content-center">
-                <div class="main-frame border m-4 border-dark border-5 p-5">
-
-                    <div class="d-flex mt-4 flex-row justify-content-center">
-                        <img class="img" src="../../../assets/images/GustoPizzaLogo Without BG.png">
-                    </div>
-        
-                    <h2 class="txt-login d-flex flex-row justify-content-center mt-5">Register</h2>
-        
-                    <div class=" mt-4 flex-row justify-content-center">
-                        <input class = "form-control" type="text" placeholder="First Name" name="" id="">
-                    </div>            
-                    <div class=" mt-4 flex-row justify-content-center">
-                        <input class = "form-control" type="text" placeholder="Last Name" name="" id="">
-                    </div>            
-                    <div class=" mt-4 flex-row justify-content-center">
-                        <input class = "form-control" type="text" placeholder="Phone" name="" id="">
-                    </div>            
-                    <div class=" mt-4 flex-row justify-content-center">
-                        <input class = "form-control" type="text" placeholder="Address" name="" id="">
-                    </div>            
-                    <div class=" mt-4 flex-row justify-content-center">
-                        <input class = "form-control" type="text" placeholder="Email" name="" id="">
-                    </div>            
-                    <div class="mt-4 flex-row justify-content-center">
-                        <input class = "form-control" type="password" placeholder="Password" name="" id="">
-                    </div>
-                    <div class="mt-4 flex-row justify-content-center">
-                        <input class = "form-control" type="password" placeholder="Password" name="" id="">
-                    </div>
-                    <div class=" d-flex justify-content-center mt-2  ">
-                        <button type="button" class="mt-2 btn btn-warning">Reset</button>
-                        <button type="button" class="ms-2 mt-2 btn btn-success">Register</button>
-                    </div>
-        
-                        <div class="back mt-4 d-flex justify-content-center">
-                            <a routerLink="/Login">
-                            <button class="Register btn btn-primary"type="button" >Back</button>
-                            </a>
-                        </div>  
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="d-flex justify-content-center">
+            <div class="main-frame border m-4 border-dark border-5 p-5">
+                <!-- Back Button -->
+                <a routerLink="/Login">
+                    <i class="bi text-light fs-2 bi-arrow-left-circle-fill"></i>
+                    <!-- <button class="Register btn btn-primary" type="button">
+                    </button> -->
+                </a>
+                <!-- Gusto Img -->
+                <div class="d-flex justify-content-center">
+                    <img class="img" src="../../../assets/images/GustoPizzaLogo Without BG.png"/>          
                 </div>
+                <!-- Register Title -->
+                <h2 class="txt-login d-flex flex-row justify-content-center m-3">
+                    Register
+                </h2>
+                <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                    <!-- Full Name Input -->
+                    <div class="d-flex flex-wrap d-flex justify-content-between">
+                        <!-- First Name Input -->
+                        <div class="col-12 col-sm-5 mt-4">
+                            <input name="FirstName" #FirstName="ngModel" ngModel class="form-control" type="text" placeholder="First Name" required>
+                            <div class="text-light" *ngIf="(FirstName.touched || FirstName.dirty) && FirstName.invalid">
+                                <!-- <span *ngIf="FirstName.errors?"></span> -->
+                                Please provide your first name.
+                            </div>
+                        </div>
+                        <!-- Last Name Input -->
+                        <div class="col-12 col-sm-5 mt-4">
+                            <input name="LastName" #LastName="ngModel" ngModel class="form-control" type="text" placeholder="Last Name" required/>
+                            <div class="text-light" *ngIf="(LastName.touched || LastName.dirty) && LastName.invalid">
+                                Please provide your last name.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Phone Input -->
+                    <div class="mt-4">
+                        <input name="Phone" #Phone="ngModel" ngModel class="form-control" type="text" placeholder="Phone"/>
+                    </div>
+                    <!-- Address Input -->
+                    <div class="mt-4">
+                        <input name="Address" #Address="ngModel" ngModel class="form-control" type="text" placeholder="Address"/>
+                    </div>
+                    <!-- Email Input -->
+                    <div class="mt-4">
+                        <input name="Email" #Email="ngModel" ngModel class="form-control" type="text" placeholder="Email" required/>
+                        <div class="text-light" *ngIf="(Email.touched || Email.dirty) && Email.invalid">
+                            Please provide your Email.
+                        </div>
+                    </div>
+                    <!-- Password Input -->
+                    <div class="mt-4">
+                        <input name="Password" #Password="ngModel" ngModel class="form-control" type="password" placeholder="Password" required/>
+                        <div class="text-light" *ngIf="(Password.touched || Password.dirty) && Password.invalid">
+                            Please choose a password.
+                        </div>
+                    </div>
+                    <!-- Confirm Password Input -->
+                    <div class="mt-4">
+                        <input name="ConfirmPassword" #ConfirmPassword="ngModel" ngModel class="form-control" type="password" placeholder="Confirm Password" required/>
+                        <div class="text-light" *ngIf="(Password.value != ConfirmPassword.value) && (ConfirmPassword.touched || ConfirmPassword.dirty)">
+                            Must match the given password.
+                        </div>
+                    </div>
+                    <!-- Reset/Register Buttons -->
+                    <div class="d-flex justify-content-center mt-2">
+                        <button type="button" class="mt-2 btn btn-warning" (click)="registerForm.reset()">Reset</button>
+                        <button type="submit" class="ms-2 mt-2 btn btn-success" [disabled]="registerForm.invalid || (Password.value != ConfirmPassword.value) || registerForm.submitted">Register</button>
+                    </div>
+                </form>
             </div>
-
-        <!--Right Side-->
-        <div class="h-70 col-lg-4 col-md-3 col-sm-1 col-xs-1 moh mt-4 d-flex justify-content-center "></div>
-            <!-- <img class="h-70 rightshit col-lg-4 col-md-3 col-sm-1 col-xs-1 moh mt-4 d-flex justify-content-center " src="/Regiester/ph10.jpg"  alt=""> -->
-
         </div>
-    </div>
+    </body>
+</html>

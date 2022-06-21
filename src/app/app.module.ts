@@ -8,6 +8,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover'
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -42,7 +43,8 @@ import { DrinkCardComponent } from './components/drink-card/drink-card.component
     FormsModule,
     HttpClientModule,
     PopoverModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

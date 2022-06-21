@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Customer } from 'src/models/customer';
 import { CustomerService } from './customer.service';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -28,6 +28,19 @@ export class LoginService {
           resolve(customer);
         }
         reject();
+      });
+    });
+    return promise;
+  }
+
+  public register(newCustomer: Customer): Promise<any> {
+    let promise = new Promise((resolve, reject) =>{
+      this.http.post(`http://localhost:3000/customers/register`, newCustomer).subscribe((result) => {
+        //Correct Info
+        resolve(result);
+      }, (err: HttpErrorResponse)=>{
+        //Bad Info
+        reject(err.statusText);
       });
     });
     return promise;
