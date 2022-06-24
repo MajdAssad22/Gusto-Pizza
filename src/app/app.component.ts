@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
   constructor(private loginService:LoginService){ }
 
   ngOnInit(): void {
-    this.loginService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn)
+    this.loginService.getSessionData()
+    this.loginService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
   }
 }

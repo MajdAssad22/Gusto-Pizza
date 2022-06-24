@@ -8,7 +8,7 @@ import { Pizza } from 'src/models/pizza';
   providedIn: 'root'
 })
 export class CustomerService {
-  currentCustomer: Customer = new Customer(-1,"","","","","","");
+  currentCustomer: Customer = new Customer();
   currentOrder: Order = new Order();
   orders: Array<Order> = new Array<Order>();
 
@@ -18,7 +18,7 @@ export class CustomerService {
     let promise = new Promise((resolve, reject) =>{
       this.http.post<Array<Order>>(`http://localhost:3000/orders/getCustomerOrders`, this.currentCustomer).subscribe(result => {
         if(result){
-          var orders: Array<Order> = new Array<Order>();
+          this.orders.splice(0);
           result.forEach(order => {
             var pizzas: Array<Pizza> = new Array<Pizza>();
             order.Pizzas.forEach((pizza: any) => {
@@ -27,9 +27,8 @@ export class CustomerService {
             });
             var orderObj: Order = Object.assign(new Order(), order);
             orderObj.Pizzas = pizzas;
-            orders.push(orderObj);
+            this.orders.push(orderObj);
           });
-          this.orders = orders;
           resolve(this.orders);
         }
         reject();
@@ -57,5 +56,21 @@ export class CustomerService {
       });
     });
     return promise;
+  }
+
+  public  updateCustomer(id: number): void{
+    this.http.post<Array<Customer>>(`http://localhost:3000/customers/getCustomer`, {'id': id}).subscribe(async result => {
+      if(result){
+        let customer = result[0];
+        this.currentCustomer.CustomerId = customer.CustomerId;
+        this.currentCustomer.FirstName = customer.FirstName;
+        this.currentCustomer.LastName = customer.LastName;
+        this.currentCustomer.Address = customer.Address;
+        this.currentCustomer.Email = customer.Email;
+        this.currentCustomer.Password = customer.Password;
+        this.currentCustomer.Phone = customer.Phone;
+        this.getOrders();
+      }
+    });
   }
 }
