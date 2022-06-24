@@ -2,10 +2,11 @@
     color: darkred;
     font-family: 'Handlee', cursive;
     background-image: url('../../../assets/images/Background.jpg');
-    height: 100%;
+    min-height: 100vh;
 }
 .AboutUs{
     background-color: rgba(145, 0, 0, 0.83);
+    min-height: 100vh;
     color: aliceblue;
 }
 .AboutUsText{
