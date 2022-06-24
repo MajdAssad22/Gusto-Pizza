@@ -33,7 +33,20 @@
             <p class="CustomerInfo d-none d-md-block">
                 {{customer.FirstName}} {{customer.LastName}}
             </p>
-            <img src="https://cdn4.iconfinder.com/data/icons/green-shopper/1068/user.png" width="50" alt="Avatar">
+            <a [popover]="customerInfoTemplate" role="button">
+                <img src="https://cdn4.iconfinder.com/data/icons/green-shopper/1068/user.png" width="50" alt="Avatar">
+            </a>
+            <ng-template #customerInfoTemplate>
+                <h3><strong>Customer Info</strong></h3>
+                <div class="m-2">
+                    <label>
+                        Name: {{customer.FirstName}} {{customer.LastName}}<br/>
+                        Address: {{customer.Address}}<br/>
+                        Phone: {{customer.Phone}}<br/>
+                    </label>
+                </div>
+                <button (click)="logout()" class="btn btn-success">Logout</button>
+            </ng-template>
         </div>
     </nav> 
 </header>
