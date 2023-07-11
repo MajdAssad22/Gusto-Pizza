@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Drink } from 'src/models/drink';
 import { PizzaSize } from 'src/models/pizza-size';
 import { Topping } from 'src/models/topping';
@@ -20,12 +21,12 @@ export class MenuService {
   }
 
   public getAvailableDrinks(): Observable<Array<Drink>> {
-    return this.http.get<Array<Drink>>(`http://localhost:3000/drinks`);
+    return this.http.get<Array<Drink>>(`${environment.server_url}drinks`);
   }
   public getAvailableSizes(): Observable<Array<PizzaSize>> {
-    return this.http.get<Array<PizzaSize>>(`http://localhost:3000/sizes`);
+    return this.http.get<Array<PizzaSize>>(`${environment.server_url}sizes`);
   }
   public getAvailableToppings(): Observable<Array<Topping>> {
-    return this.http.get<Array<Topping>>(`http://localhost:3000/toppings`);
+    return this.http.get<Array<Topping>>(`${environment.server_url}toppings`);
   }
 }

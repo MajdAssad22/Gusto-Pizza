@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Customer } from 'src/models/customer';
 import { Order } from 'src/models/order';
 import { Pizza } from 'src/models/pizza';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class CustomerService {
 
   public getOrders(): Promise<any> {
     let promise = new Promise((resolve, reject) =>{
-      this.http.post<Array<Order>>(`http://localhost:3000/orders/getCustomerOrders`, this.currentCustomer).subscribe(result => {
+      this.http.post<Array<Order>>(`${environment.server_url}orders/getCustomerOrders`, this.currentCustomer).subscribe(result => {
         if(result){
           this.orders.splice(0);
           result.forEach(order => {
@@ -43,7 +44,7 @@ export class CustomerService {
         "Customer": this.currentCustomer,
         "Order": this.currentOrder 
       };
-      this.http.post<any>(`http://localhost:3000/orders/addOrder`, customerOrder).subscribe(result => {
+      this.http.post<any>(`${environment.server_url}orders/addOrder`, customerOrder).subscribe(result => {
         if(result){
           this.currentOrder = new Order();
           this.getOrders().then(
@@ -59,7 +60,7 @@ export class CustomerService {
   }
 
   public  updateCustomer(id: number): void{
-    this.http.post<Array<Customer>>(`http://localhost:3000/customers/getCustomer`, {'id': id}).subscribe(async result => {
+    this.http.post<Array<Customer>>(`${environment.server_url}customers/getCustomer`, {'id': id}).subscribe(async result => {
       if(result){
         let customer = result[0];
         this.currentCustomer.CustomerId = customer.CustomerId;

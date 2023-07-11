@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Customer } from 'src/models/customer';
 import { CustomerService } from './customer.service';
 import { BehaviorSubject, observable, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class LoginService {
       password: password
     };
     let promise = new Promise((resolve, reject) =>{
-      this.http.post<Customer>(`http://localhost:3000/customers/login`, loginInfo).subscribe(customer => {
+      this.http.post<Customer>(`${environment.server_url}customers/login`, loginInfo).subscribe(customer => {
         if(customer){
           this.isLoggedInSource.next(true);
           this.customerService.currentCustomer = customer;
@@ -36,7 +37,7 @@ export class LoginService {
 
   public register(newCustomer: Customer): Promise<any> {
     let promise = new Promise((resolve, reject) =>{
-      this.http.post(`http://localhost:3000/customers/register`, newCustomer).subscribe((result) => {
+      this.http.post(`${environment.server_url}customers/register`, newCustomer).subscribe((result) => {
         //Correct Info
         resolve(result);
       }, (err: HttpErrorResponse)=>{
