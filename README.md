@@ -5,7 +5,7 @@
 * Mohamed Sayed Ahmed
 
 ### Purpose:
-The purpose of this project is to practice and imporve working with angular.
+The purpose of this project is to practice and improve working with angular.
 And expanding our knowledge in developing a web application.
 
 ### How Run The Project:
