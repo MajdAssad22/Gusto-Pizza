@@ -6,9 +6,9 @@
 
 ### Purpose:
 The purpose of this project is to practice and improve working with angular.
-And expanding our knowledge in developing a web application.
+And expanding our knowledge in developing web applications.
 
-### How Run The Project:
+### How To Run The Project:
 You must do two things:
 * Start the frontend:
   * Install all the libraries used in this app using `npm install`
