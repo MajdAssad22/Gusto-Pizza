@@ -19,10 +19,13 @@ A website for a pizzeria called Gusto Pizza, where customers can login and order
 ## How to Run
 You must do two things:
 * Start the frontend:
-  * Install all the libraries used in this app using `npm install`
+  * Navigate to "GustoPizza Frontend" folder
+  * Install all the libraries used in frontend using `npm install`
   * Start the app `ng serve`
   
 * Start the backend:
+  * Navigate to "GustoPizza Backend" folder
+  * Install all the libraries used in backend using `npm install`
   * Add the .env file in the backend folder (GustoPizza Backend) and write in it the following:
   ```
   DB_HOST="127.0.0.1"
