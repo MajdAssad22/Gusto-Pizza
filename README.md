@@ -42,8 +42,8 @@ External libraries:
 - Express, Moment, Mysql
 
 Contributers:
-- Majd Assad
-- Mohamed Sayed Ahmed
+- [Majd Assad](https://github.com/majdassad22)
+- [Mohamed Sayed Ahmed](https://github.com/mohamedsayedahmd)
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
